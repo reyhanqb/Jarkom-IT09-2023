@@ -14,7 +14,9 @@ User melakukan berbagai aktivitas dengan menggunakan protokol FTP. Salah satunya
    d. Berapakah acknowledge number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?
 
 ## Jawaban
-Gunakan script filter “ftp || ftp-data”
+1. Gunakan script filter “ftp || ftp-data”
+2. Cari dengan kata kunci STOR dan sequence number dan acknowledge number akan muncul
+3. Jawab per soalnya
 
 # Soal 2
 ## Pertanyaan
