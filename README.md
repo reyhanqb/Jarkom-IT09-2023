@@ -28,7 +28,9 @@ b.) UDP
 # Soal 4
 1. Upload soal 4 ke wireshark dan buka packet no 130 sesuai yang ada pada soal
 2. Value checksum dapat dilihat disini
+
 ![Picture4](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023/assets/107137535/bc40910d-0e08-4fc8-a3f1-2f87b8c00bfc)
+
 3. Ketik command “nc 10.21.78.111 13591” pada wsl
 4. Jawab dengan checksum tadi dan flag muncul
 
