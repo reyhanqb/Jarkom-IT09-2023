@@ -106,7 +106,7 @@ Berikan kueri filter sehingga wireshark hanya mengambil semua protokol paket yan
 1. Pada wsl masukkan “nc 10.21.78.111 7171”
 2. Jawab dengan kueri yang diminta yaitu “tcp.dstport == 80 || udp.dstport == 80” dan flag ditemukan
 
-![Picture5](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023)
+![Picture5](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023/assets/107137535/25f2ce0a-f45a-42f5-a722-f49340be76bf)
    
 # Soal 9
 ## Pertanyaan
