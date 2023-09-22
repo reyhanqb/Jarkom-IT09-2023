@@ -6,10 +6,15 @@ Muhammad Hilmy Adhi Pradityo - 5027211053
 Athaya Reyhan Nugroho - 5027211067
 
 # Soal 1
+Gunakan script filter “ftp || ftp-data”
 
 # Soal 2
-
 Ditanya tentang nama server yang berjalan pada instance. Nama server bisa didapat dengan cara mengakses developer tools di web, lalu cek response header yang pertama kali muncul.
+1. Pada soal 2, lakukan inspect pada soal
+2. Pilih bagian network dan klik bagian events
+3. Terdapat keterangan nama server yang digunakan sesuai yang diperintah soal
+4. Pada wsl masukkan command “nc 10.21.78.111 13579”
+5. Masukkan jawaban yang diminta (gunicorn) dan flag akan muncul
 
 ![Picture1](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023/assets/107137535/af4b07bc-bde3-4c4a-93f2-4fd387fa1dc1)
 ![Picture2](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023/assets/107137535/da8263f3-c18b-41dc-971a-b4f28ffa12a8)
@@ -21,15 +26,37 @@ b.) UDP
 ![Picture3](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023/assets/107137535/f60bab35-6f52-4a98-b736-6ef0fdd65226)
 
 # Soal 4
-
-Cari packet dengan nomor index 130, lalu buka detail packet. Value checksum dapat dilihat disini
+1. Upload soal 4 ke wireshark dan buka packet no 130 sesuai yang ada pada soal
+2. Value checksum dapat dilihat disini
 ![Picture4](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023/assets/107137535/bc40910d-0e08-4fc8-a3f1-2f87b8c00bfc)
+3. Ketik command “nc 10.21.78.111 13591” pada wsl
+4. Jawab dengan checksum tadi dan flag muncul
 
 # Soal 5
+1. Upload soal 5 ke wireshark
+2. Follow UDP Stream package lalu didapat password NWltcGxlUGFzNXdvcmQ= yang dienkripsi dengan base64.
+3. Setelah dibuka file .txt, keluar instruksi untuk nc ke 10.21.78.111 11111.
+   a. Jawabannya adalah 60 setelah export file dan hitung
+   b. Port yg digunakan SMTP antara 25, 465, 587
+   c. Jawaban yang tidak mungkin cuma 192.168.1.1, karena 192 sifatnya local.
 
 # Soal 7
-Gunakan query ip.dst == 184.87.193.88
-# Soal 8
+1. Download File pcap dari no 7 dan upload ke wireshark
+2. Masukkan query berikut “ip.addr==184.87.193.88” sesuai ip yang ada pada soal
+3. Hitung pada bagian destination jumlah ip yang terdapat seperti pada soal (184.87.193.88)
+4. Pada wsl masukkan command “nc 10.21.78.111 6565”
+5. Masukkan jawaban jumlah dari ip tadi di bagian answer dan flag muncul
 
+# Soal 8
+1. Pada wsl masukkan “nc 10.21.78.111 7171”
+2. Jawab dengan kueri yang diminta yaitu “tcp.dstport == 80 || udp.dstport == 80” dan flag ditemukan
+   
 # Soal 9
 Gunakan query ip.src == 10.51.40.1 && ip.dst != 10.39.55.34
+
+# Soal 10
+1. Upload file soal no 10 ke wireshark
+2. Pada filter masukkan kata kunci “telnet”
+3. Cari satu-persatu dari hasil filter tadi hingga menemukan username dan passwordnya
+4. Setelah menemukannya, buka wsl dan masukkan command "nc 10.21.78.111 7373"
+5. Jawab pertanyaan dengan username dan password yang ditemukan tadi sesuai format yang diminta (dhafin:kesayangannyak0k0) dan flag akan muncul
