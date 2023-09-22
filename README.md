@@ -26,6 +26,7 @@ Nama server bisa didapat dengan cara mengakses developer tools di web, lalu cek 
 # Soal 3
 ## Pertanyaan
 a.) Berapa banyak paket yang tercapture dengan IP source maupun destination address adalah 239.255.255.250 dengan port 3702?
+
 b.) Protokol layer transport apa yang digunakan?
 ## Jawaban
 a.) Gunakan query (ip.src ==  239.255.255.250 || ip.dst ==  239.255.255.250) && udp.port == 3702, lalu export file untuk hitung jumlah package yang ada.
