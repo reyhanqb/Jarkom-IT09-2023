@@ -18,6 +18,8 @@ User melakukan berbagai aktivitas dengan menggunakan protokol FTP. Salah satunya
 2. Cari dengan kata kunci STOR dan sequence number dan acknowledge number akan muncul
 3. Jawab per soalnya
 
+![Picture6](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023/assets/107137535/d3427f93-0a7b-421b-89b6-a28568b47bd2)
+
 # Soal 2
 ## Pertanyaan
 Sebutkan web server yang digunakan pada portal praktikum Jaringan Komputer!
@@ -69,10 +71,14 @@ Elshe menemukan suatu file packet capture yang menarik. Bantulah Elshe untuk men
 
 ## Jawaban
 1. Upload soal 5 ke wireshark
+
 2. Follow UDP Stream package lalu didapat password NWltcGxlUGFzNXdvcmQ= yang dienkripsi dengan base64.
+![Screenshot (200)](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023/assets/107137535/547dc85f-9879-4638-a532-d0293d2434f1)
 3. Setelah dibuka file .txt, keluar instruksi untuk nc ke 10.21.78.111 11111.
    a. Jawabannya adalah 60 setelah export file dan hitung
-   b. Port yg digunakan SMTP antara 25, 465, 587
+
+   b. Port yg digunakan SMTP disini yaitu 25
+   ![Screenshot (199)](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023/assets/107137535/dbe957e3-c1b0-42f4-b2fc-8606621b83e7)
    c. Jawaban yang tidak mungkin cuma 192.168.1.1, karena 192 sifatnya local.
 
 # Soal 6
@@ -99,6 +105,8 @@ Berikan kueri filter sehingga wireshark hanya mengambil semua protokol paket yan
 ## Jawaban
 1. Pada wsl masukkan “nc 10.21.78.111 7171”
 2. Jawab dengan kueri yang diminta yaitu “tcp.dstport == 80 || udp.dstport == 80” dan flag ditemukan
+
+![Picture5](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-
    
 # Soal 9
 ## Pertanyaan
@@ -117,3 +125,5 @@ Sebutkan kredensial yang benar ketika user mencoba login menggunakan Telnet
 3. Cari satu-persatu dari hasil filter tadi hingga menemukan username dan passwordnya
 4. Setelah menemukannya, buka wsl dan masukkan command "nc 10.21.78.111 7373"
 5. Jawab pertanyaan dengan username dan password yang ditemukan tadi sesuai format yang diminta (dhafin:kesayangannyak0k0) dan flag akan muncul
+
+![WhatsApp Image 2023-09-22 at 6 27 52 PM](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023/assets/107137535/610e3ad9-2c0f-4db3-abee-ca7ead2daa58)
