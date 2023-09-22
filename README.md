@@ -83,7 +83,7 @@ Berapa jumlah packet yang menuju IP 184.87.193.88?
 
 ## Jawaban
 1. Download File pcap dari no 7 dan upload ke wireshark
-2. Masukkan query berikut “ip.addr==184.87.193.88” sesuai ip yang ada pada soal
+2. Masukkan query berikut “ip.dst==184.87.193.88” sesuai ip yang ada pada soal
 3. Hitung pada bagian destination jumlah ip yang terdapat seperti pada soal (184.87.193.88)
 4. Pada wsl masukkan command “nc 10.21.78.111 6565”
 5. Masukkan jawaban jumlah dari ip tadi di bagian answer dan flag muncul
