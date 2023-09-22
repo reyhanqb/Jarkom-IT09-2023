@@ -3,10 +3,17 @@
 # Anggota
 
 Muhammad Hilmy Adhi Pradityo - 5027211053
-
 Athaya Reyhan Nugroho - 5027211067
 
 # Soal 1
+## Pertanyaan
+User melakukan berbagai aktivitas dengan menggunakan protokol FTP. Salah satunya adalah mengunggah suatu file.
+   a. Berapakah sequence number (raw) pada packet yang menunjukkan aktivitas tersebut?
+   b. Berapakah acknowledge number (raw) pada packet yang menunjukkan aktivitas tersebut? 
+   c. Berapakah sequence number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?
+   d. Berapakah acknowledge number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?
+
+## Jawaban
 Gunakan script filter “ftp || ftp-data”
 
 # Soal 2
@@ -27,8 +34,8 @@ Nama server bisa didapat dengan cara mengakses developer tools di web, lalu cek 
 # Soal 3
 ## Pertanyaan
 a.) Berapa banyak paket yang tercapture dengan IP source maupun destination address adalah 239.255.255.250 dengan port 3702?
-
 b.) Protokol layer transport apa yang digunakan?
+
 ## Jawaban
 a.) Gunakan query (ip.src ==  239.255.255.250 || ip.dst ==  239.255.255.250) && udp.port == 3702, lalu export file untuk hitung jumlah package yang ada.
 
@@ -41,6 +48,7 @@ b.) UDP
 # Soal 4
 ## Pertanyaan
 Berapa nilai checksum yang didapat dari header pada paket nomor 130?
+
 ## Jawaban
 1. Upload soal 4 ke wireshark dan buka packet no 130 sesuai yang ada pada soal
 2. Value checksum dapat dilihat disini
@@ -51,6 +59,13 @@ Berapa nilai checksum yang didapat dari header pada paket nomor 130?
 4. Jawab dengan checksum tadi dan flag muncul
 
 # Soal 5
+## Pertanyaan
+Elshe menemukan suatu file packet capture yang menarik. Bantulah Elshe untuk menganalisis file packet capture tersebut.
+   a. Berapa banyak packet yang berhasil di capture dari file pcap tersebut?
+   b. Port berapakah pada server yang digunakan untuk service SMTP?
+   c. Dari semua alamat IP yang tercapture, IP berapakah yang merupakan public IP?
+
+## Jawaban
 1. Upload soal 5 ke wireshark
 2. Follow UDP Stream package lalu didapat password NWltcGxlUGFzNXdvcmQ= yang dienkripsi dengan base64.
 3. Setelah dibuka file .txt, keluar instruksi untuk nc ke 10.21.78.111 11111.
@@ -58,9 +73,14 @@ Berapa nilai checksum yang didapat dari header pada paket nomor 130?
    b. Port yg digunakan SMTP antara 25, 465, 587
    c. Jawaban yang tidak mungkin cuma 192.168.1.1, karena 192 sifatnya local.
 
+# Soal 6
+## Pertanyaan
+Seorang anak bernama Udin Berteman dengan SlameT yang merupakan seorang penggemar film detektif. sebagai teman yang baik, Ia selalu mengajak slamet untuk bermain valoranT bersama. suatu malam, terjadi sebuah hal yang tak terdUga. ketika udin mereka membuka game tersebut, laptop udin menunjukkan sebuah field text dan Sebuah kode Invalid bertuliskan "server SOURCE ADDRESS 7812 is invalid". ketika ditelusuri di google, hasil pencarian hanya menampilkan a1 e5 u21. jiwa detektif slamet pun bergejolak. bantulah udin dan slamet untuk menemukan solusi kode error tersebut.
+
 # Soal 7
 ## Pertanyaan
 Berapa jumlah packet yang menuju IP 184.87.193.88?
+
 ## Jawaban
 1. Download File pcap dari no 7 dan upload ke wireshark
 2. Masukkan query berikut “ip.addr==184.87.193.88” sesuai ip yang ada pada soal
@@ -69,17 +89,27 @@ Berapa jumlah packet yang menuju IP 184.87.193.88?
 5. Masukkan jawaban jumlah dari ip tadi di bagian answer dan flag muncul
 
 ![Screenshot (198)](https://github.com/reyhanqb/Jarkom-Modul-1-IT09-2023/assets/107137535/ffabe3fa-7f8a-4683-b89f-182a0a146eda)
+
 # Soal 8
+## Pertanyaan
+Berikan kueri filter sehingga wireshark hanya mengambil semua protokol paket yang menuju port 80! (Jika terdapat lebih dari 1 port, maka urutkan sesuai dengan abjad)
+
+## Jawaban
 1. Pada wsl masukkan “nc 10.21.78.111 7171”
 2. Jawab dengan kueri yang diminta yaitu “tcp.dstport == 80 || udp.dstport == 80” dan flag ditemukan
    
 # Soal 9
 ## Pertanyaan
 Berikan kueri filter sehingga wireshark hanya mengambil paket yang berasal dari alamat 10.51.40.1 tetapi tidak menuju ke alamat 10.39.55.34!
+
 ## Jawaban
 Gunakan query ip.src == 10.51.40.1 && ip.dst != 10.39.55.34
 
 # Soal 10
+## Pertanyaan
+Sebutkan kredensial yang benar ketika user mencoba login menggunakan Telnet
+
+## Jawaban
 1. Upload file soal no 10 ke wireshark
 2. Pada filter masukkan kata kunci “telnet”
 3. Cari satu-persatu dari hasil filter tadi hingga menemukan username dan passwordnya
