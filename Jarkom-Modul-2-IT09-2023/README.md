@@ -3,33 +3,8 @@
 # Anggota
 
 Muhammad Hilmy Adhi Pradityo - 5027211053
+
 Athaya Reyhan Nugroho - 5027211067
-
-# Soal
-
-1. Yudhistira akan digunakan sebagai DNS Master, Werkudara sebagai DNS Slave, Arjuna merupakan Load Balancer yang terdiri dari beberapa Web Server yaitu Prabakusuma, Abimanyu, dan Wisanggeni. Buatlah topologi dengan pembagian sebagai berikut. Folder topologi dapat diakses pada drive berikut 
-2. Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan alias www.arjuna.yyy.com dengan yyy merupakan kode kelompok.
-3. Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses ke abimanyu.yyy.com dan alias www.abimanyu.yyy.com.
-4. Kemudian, karena terdapat beberapa web yang harus di-deploy, buatlah subdomain parikesit.abimanyu.yyy.com yang diatur DNS-nya di Yudhistira dan mengarah ke Abimanyu.
-5. Buat juga reverse domain untuk domain utama. (Abimanyu saja yang direverse)
-6. Agar dapat tetap dihubungi ketika DNS Server Yudhistira bermasalah, buat juga Werkudara sebagai DNS Slave untuk domain utama.
-7. Seperti yang kita tahu karena banyak sekali informasi yang harus diterima, buatlah subdomain khusus untuk perang yaitu baratayuda.abimanyu.yyy.com dengan alias www.baratayuda.abimanyu.yyy.com yang didelegasikan dari Yudhistira ke Werkudara dengan IP menuju ke Abimanyu dalam folder Baratayuda.
-8. Untuk informasi yang lebih spesifik mengenai Ranjapan Baratayuda, buatlah subdomain melalui Werkudara dengan akses rjp.baratayuda.abimanyu.yyy.com dengan alias www.rjp.baratayuda.abimanyu.yyy.com yang mengarah ke Abimanyu.
-9. Arjuna merupakan suatu Load Balancer Nginx dengan tiga worker (yang juga menggunakan nginx sebagai webserver) yaitu Prabakusuma, Abimanyu, dan Wisanggeni. Lakukan deployment pada masing-masing worker.
-10. Kemudian gunakan algoritma Round Robin untuk Load Balancer pada Arjuna. Gunakan server_name pada soal nomor 1. Untuk melakukan pengecekan akses alamat web tersebut kemudian pastikan worker yang digunakan untuk menangani permintaan akan berganti ganti secara acak. Untuk webserver di masing-masing worker wajib berjalan di port 8001-8003. Contoh
-    - Prabakusuma:8001
-    - Abimanyu:8002
-    - Wisanggeni:8003
-11. Selain menggunakan Nginx, lakukan konfigurasi Apache Web Server pada worker Abimanyu dengan web server www.abimanyu.yyy.com. Pertama dibutuhkan web server dengan DocumentRoot pada /var/www/abimanyu.yyy
-12. Setelah itu ubahlah agar url www.abimanyu.yyy.com/index.php/home menjadi www.abimanyu.yyy.com/home.
-13. Selain itu, pada subdomain www.parikesit.abimanyu.yyy.com, DocumentRoot disimpan pada /var/www/parikesit.abimanyu.yyy
-14. Pada subdomain tersebut folder /public hanya dapat melakukan directory listing sedangkan pada folder /secret tidak dapat diakses (403 Forbidden).
-15. Buatlah kustomisasi halaman error pada folder /error untuk mengganti error kode pada Apache. Error kode yang perlu diganti adalah 404 Not Found dan 403 Forbidden.
-16. Buatlah suatu konfigurasi virtual host agar file asset www.parikesit.abimanyu.yyy.com/public/js menjadi www.parikesit.abimanyu.yyy.com/js 
-17. Agar aman, buatlah konfigurasi agar www.rjp.baratayuda.abimanyu.yyy.com hanya dapat diakses melalui port 14000 dan 14400.
-18. Untuk mengaksesnya buatlah autentikasi username berupa “Wayang” dan password “baratayudayyy” dengan yyy merupakan kode kelompok. Letakkan DocumentRoot pada /var/www/rjp.baratayuda.abimanyu.yyy.
-19. Buatlah agar setiap kali mengakses IP dari Abimanyu akan secara otomatis dialihkan ke www.abimanyu.yyy.com (alias)
-20. Karena website www.parikesit.abimanyu.yyy.com semakin banyak pengunjung dan banyak gambar gambar random, maka ubahlah request gambar yang memiliki substring “abimanyu” akan diarahkan menuju abimanyu.png.
 
 # Pengerjaan
 
@@ -86,13 +61,16 @@ Pada `bashrc` masukkan script berikut
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.68.0.0/16
 echo nameserver 192.168.122.1 > /etc/resolv.conf
 ```
-Untuk tes apakah no 1 sudah berhasil, jalankan command
+Untuke melakukan test kita dapat ping ke google. Jika sudah berhasil, seharusnya tidak ada packet loss yang terjadi 
 ```
 ping google.com
 ```
+## Output
+![Screenshot 2023-10-17 185310](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/3ecb6845-5b7a-48be-8949-4cf8523fd7d1)
+
 
 ## Soal 2
-Pada DNS Master/`Yudhistira`, masukkan script berikut
+Pada `Yudhistira`, buatlah konfigurasi zone untuk arjuna.IT09.com
 ```
 echo 'zone "arjuna.IT09.com" {
         type master;
@@ -116,20 +94,20 @@ $TTL    604800
                          604800 )       ; Negative Cache TTL
 ;
 @       IN      NS      arjuna.IT09.com.
-@       IN      A       10.68.1.2
-@       IN      AAAA    ::1
-www     IN      CNAME   www.arjuna.IT09.com' > /etc/bind/jarkom/arjuna.IT09.com
+@       IN      A       10.68.4.5
+www     IN      CNAME   arjuna.IT09.com. > /etc/bind/jarkom/arjuna.IT09.com
 
 service bind9 restart
 ```
-Untuk tes no 2, pada client/`Sadewa` jalankan command
+Untuk tes no 2, pada client `Sadewa` jalankan command
 ```
 ping arjuna.IT09.com
 ping www.arjuna.IT09.com
 ```
+![Screenshot 2023-10-17 190947](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/a885f177-e418-40ce-9712-0e66e1beb28d)
 
 ## Soal 3
-Pada DNS Master/`Yudhistira`, masukkan script berikut
+Pada `Yudhistira`, masukkan script berikut
 ```
 echo 'zone "abimanyu.IT09.com" {
         type master;
@@ -152,15 +130,17 @@ $TTL    604800
 ;
 @       IN      NS      abimanyu.IT09.com.
 @       IN      A       10.68.2.2
-www     IN      CNAME   www.abimanyu.IT09.com' > /etc/bind/jarkom/abimanyu.IT09.com
+www     IN      CNAME   www.abimanyu.IT09.com.' > /etc/bind/jarkom/abimanyu.IT09.com
 
 service bind9 restart
 ```
-Untuk tes no 3, pada client/`Sadewa` jalankan command
+Untuk tes no 3, pada client `Sadewa` jalankan command
 ```
 ping abimanyu.IT09.com
 ping www.abimanyu.IT09.com
 ```
+## Output
+![Screenshot 2023-10-17 191245](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/58d9fe5f-05d8-4ac7-9b19-29d48482cb5d)
 
 ## Soal 4
 Pada DNS Master/`Yudhistira`, ada tambahan script berikut di bagian setup `Abimanyu` sehingga menjadi
@@ -178,7 +158,7 @@ $TTL    604800
 ;
 @       IN      NS      abimanyu.IT09.com.
 @       IN      A       10.68.2.2
-www     IN      CNAME   www.abimanyu.IT09.com
+www     IN      CNAME   www.abimanyu.IT09.com.
 parikesit IN   A 10.68.2.2' > /etc/bind/jarkom/abimanyu.IT09.com
 
 service bind9 restart
@@ -186,11 +166,11 @@ service bind9 restart
 Untuk tes no 4, pada client/`Sadewa` jalankan command
 ```
 ping parikesit.abimanyu.IT09.com
-ping www.parikesit.abimanyu.IT09.com
 ```
+![Screenshot 2023-10-17 191606](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/e3c8acfb-32ec-47f8-b910-435a56ed9846)
 
 ## Soal 5
-Pada DNS Master/`Yudhistira`, masukkan script berikut
+Pada DNS Master `Yudhistira`, masukkan script berikut
 ```
 echo 'zone "4.68.10.in-addr.arpa" {
         type master;
@@ -224,6 +204,8 @@ Jalankan command berikut untuk memastikan no 5
 ```
 host -t PTR 10.68.4.3
 ```
+## Output
+![Screenshot 2023-10-17 191813](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/4e5b1fb2-c323-4b4d-b155-2b348ea89fd9)
 
 ## Soal 6
 Pada DNS Master/`Yudhistira` diperlukan setup `also-notify` dan `allow-transfer`
@@ -262,10 +244,12 @@ zone "arjuna.IT09.com" {
 
 service bind9 restart
 ```
-Untuk tes no 6, jalankan command ini di client/`Sadewa`
+Untuk tes no 6, jalankan command ini di client/`Sadewa` dalam posisi service bind9 di Yudhistira mati
 ```
 ping arjuna.IT09.com
 ```
+## Output
+![Screenshot 2023-10-17 191921](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/3f4ec4f6-8498-4fb5-99d8-d4a6d3eefadc)
 
 ## Soal 7
 Pada DNS Master/`Yudhistira`, tambahkan script berikut
@@ -338,7 +322,7 @@ options {
         allow-query { any; };
 
         auth-nxdomain no;
-        listen-on-v6 { any };
+        listen-on-v6 { any; };
 };' > /etc/bind/named.conf.options
 ```
 Untuk tes no 7, jalankan command ini di client/`Sadewa`
@@ -346,6 +330,8 @@ Untuk tes no 7, jalankan command ini di client/`Sadewa`
 ping baratayuda.abimanyu.IT09.com
 ping www.baratayuda.abimanyu.IT09.com
 ```
+## Output
+![Screenshot 2023-10-17 192116](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/97035d5f-d1e7-4342-acee-8658d2a8a348)
 
 ## Soal 8
 Pada `Werkudara`, tambahkan script berikut 
@@ -372,12 +358,63 @@ rjp     IN      A       10.68.4.3
 Untuk tes no 8, jalankan command ini di client/`Sadewa`
 ```
 ping rjp.baratayuda.abimanyu.IT09.com
-ping www.rjp.baratayuda.abimanyu.IT09.com
 ```
+## Output
+![Screenshot 2023-10-17 192403](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/2dbdedba-af0a-4a50-9c42-e34a1173a502)
 
 ## Soal 9
 
-## Soal 10
+## Langkah
+
+Lakukan deployment pada masing-masing worker dengan konfigurasi apache2 seperti dibawah ini: 
+
+```
+echo '
+<?php
+echo "Halo, Prabukusuma!";
+?>
+' > /var/www/jarkom/index.php
+
+echo 'server {
+        listen 8001;
+
+        root /var/www/jarkom;
+
+        index index.php;
+        server_name _;
+
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        # pass PHP scripts to FastCGI server
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+        }
+        location ~ /\.ht {
+                deny all;
+        }
+
+        error_log /var/log/nginx/it09_error.log;
+        access_log /var/log/nginx/it09_access.log;
+}' > /etc/nginx/sites-available/jarkom
+
+ln -s /etc/nginx/sites-available/jarkom /etc/nginx/sites-enabled
+
+rm /etc/nginx/sites-enabled/default
+
+service php7.0-fpm start
+
+service nginx restart
+```
+
+
+
+## Output
+![Screenshot 2023-10-17 192508](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/e1b94f16-aef3-490a-be31-c2d214511256)
+![Screenshot 2023-10-17 192525](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/cc2b44d9-6c17-429c-a59b-1a2c5dde69ba)
+![Screenshot 2023-10-17 192538](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/ff150cf5-440f-488e-b73d-231c72eea206)
 
 ## Soal 11
 Pada `Abimanyu`, masukkan script ini
