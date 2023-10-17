@@ -452,6 +452,8 @@ Untuk tes no 11, pada client/`Sadewa` jalankan command
 ```
 lynx abimanyu.IT09.com
 ```
+## Output
+![Screenshot (224)](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/a458300a-6e38-4571-9fd3-b56e2dc899e0)
 
 ## Soal 12
 Pada `Abimanyu`, ada script tambahan untuk no 12
@@ -477,6 +479,8 @@ Untuk tes no 12, jalankan command ini di client/`Sadewa`
 ```
 lynx abimanyu.IT09.com/home
 ```
+## Output
+![Screenshot (229)](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/e4eb0ca6-6e1a-4872-904d-6f75baccb3da)
 
 ## Soal 13
 Pada `Abimanyu`, masukkan script berikut
@@ -509,3 +513,65 @@ Untuk tes no 13, jalankan command ini di client/`Sadewa`
 ```
 lynx parikesit.abimanyu.IT09.com
 ```
+## Output
+![Screenshot (225)](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/d7a7e360-9afa-4963-ad61-dc797c704641)
+
+# Soal 14
+
+Tambahkan kode berikut untuk pada apache2 config untuk parikesit:
+
+```
+<Directory /var/www/parikesit.abimanyu.IT09/public>
+        Options +Indexes
+    </Directory>
+
+    <Directory /var/www/parikesit.abimanyu.IT09/secret>
+        Options -Indexes
+    </Directory>
+```
+Untuk testing, dapat menjalankan lynx ke alamat parikesit.abimanyu.IT09.com
+
+## Output
+![Screenshot (230)](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/d22960db-a1dd-43a3-a33e-bf3e30adae87)
+
+# Soal 15
+
+Tambahkan error files yang sudah disediakan pada zip file parikesit ke apache2 confignya: 
+
+```
+<VirtualHost *:80>
+        ServerName parikesit.abimanyu.IT09.com
+        ServerAlias www.parikesit.abimanyu.IT09.com
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/parikesit.abimanyu.IT09.com
+
+        <Directory /var/www/parikesit.abimanyu.IT09/public>
+            Options +Indexes
+        </Directory>
+
+        <Directory /var/www/parikesit.abimanyu.IT09/secret>
+            Options -Indexes
+        </Directory>
+        
+        
+        ErrorDocument 404 /error/404.html
+        ErrorDocument 403 /error/403.html
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+Kemudian kita bisa lynx ke path yang tidak ada atau mencoba mengakses folder ./secret untuk melihat custom error message 
+
+## Output
+![Screenshot (228)](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/21a41dc2-2214-4de0-8fe2-f742f28a78e5)
+
+![Screenshot (226)](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/e45449e6-d222-4334-b5ca-493d10b21a48)
+
+## Soal 16
+
+Tambahkan ```Alias /js /var/www/parikesit.abimanyu.IT09/public/js```
+pada apache2 config untuk abimanyu
+
+## Output
+![Screenshot (227)](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/01be6a76-98fe-49b8-afbe-b4d4d1feb728)
