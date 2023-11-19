@@ -10,10 +10,8 @@ Athaya Reyhan Nugroho - 5027211067
 ### Topologi
 ![App Screenshot](https://i.ibb.co/kKS9HxR/Whats-App-Image-2023-11-16-at-20-43-46.jpg)
 
-### Soal 0
-
 ### Soal 1
-Pada DNS Server (Heiter) masukkan script berikut
+Setelah konfigurasi ip dan setup, kita perlu register domain `riegel.canyon.it09.com` untuk worker Laravel dan `granz.channel.it09.com` untuk worker PHP. Pada DNS Server (Heiter) masukkan script berikut:
 ```
 echo '
 zone "riegel.canyon.it09.com" {
@@ -67,9 +65,12 @@ www     IN      CNAME   granz.channel.it09.com.' > /etc/bind/jarkom/granz.channe
 
 service bind9 restart
 ```
+#### Output
+![App Screenshot](https://i.ibb.co/0JX2dZ7/no-1.jpg)
+![App Screenshot](https://i.ibb.co/9trj9Bc/no-1-sisan.jpg)
 
 ### Soal 2
-Pada DHCP Server (Himmel) tambahkan script berikut
+Kita perlu setup agar Client yang melalui Switch3 mendapatkan range IP dari 10.68.3.16 - 10.68.3.32 dan 10.68.3.64 - 10.68.3.80. Pada DHCP Server (Himmel) tambahkan script berikut:
 ```
 echo '
 subnet '10.68.1.0' netmask '255.255.255.0' {
@@ -85,7 +86,7 @@ subnet '10.68.3.0' netmask '255.255.255.0' {
 ```
 
 ### Soal 3
-Pada DHCP Server (Himmel) tambahkan script berikut
+Kita perlu setup agar Client yang melalui Switch4 mendapatkan range IP dari 10.68.4.12 - 10.68.4.20 dan 10.68.4.160 - 10.68.4.168. Pada DHCP Server (Himmel) tambahkan script berikut:
 ```
 echo '
 subnet '10.68.2.0' netmask '255.255.255.0' {
@@ -101,7 +102,7 @@ subnet '10.68.4.0' netmask '255.255.255.0' {
 ```
 
 ### Soal 4
-Pada DHCP Server (Himmel) tambahkan script berikut
+Pada DHCP Server (Himmel) tambahkan script berikut:
 ```
 echo '
 subnet '10.68.3.0' netmask '255.255.255.0' {
@@ -118,7 +119,7 @@ subnet '10.68.4.0' netmask '255.255.255.0' {
 }
 ' > /etc/dhcp/dhcpd.conf
 ```
-Lalu, pada DHCP Relay (Aura) tambahkan script berikut 
+Lalu, pada DHCP Relay (Aura) tambahkan script berikut:
 ```
 echo '
 SERVERS="10.68.1.2"
@@ -129,9 +130,11 @@ echo 'net.ipv4.ip_forward=1' > /etc/sysctl.conf
 
 service isc-dhcp-relay restart
 ```
+#### Output
+![App Screenshot](https://i.ibb.co/g9krtNQ/no-4.jpg)
 
 ### Soal 5
-Pada DHCP Server (Himmel) tambahkan script berikut 
+Pada DHCP Server (Himmel) tambahkan script berikut:
 ```
 echo '
 subnet '10.68.1.0' netmask '255.255.255.0' {
@@ -160,3 +163,6 @@ subnet '10.68.4.0' netmask '255.255.255.0' {
 }
 ' > /etc/dhcp/dhcpd.conf
 ```
+#### Output
+![App Screenshot](https://i.ibb.co/BZqqNWb/no-5.jpg)
+![App Screenshot](https://i.ibb.co/jw4KdPn/no-5-sisan.jpg)
