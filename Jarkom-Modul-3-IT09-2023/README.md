@@ -230,16 +230,92 @@ rm /etc/nginx/sites-enabled/default
 ![auth](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/b0b5e8bc-92e2-4507-9df0-922777abac4f)
 
 ## Soal 7
+Pertama-tama kita harus melakukan konfigurasi ulang di DNS Server (Heiter) untuk mengarahkan ip konfigurasi bind9 ke Eisen
 
+```sh
+echo ';
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     riegel.canyon.it09.com. root.riegel.canyon.it09.com. (
+                        2023111401      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      riegel.canyon.it09.com.
+@       IN      A       10.68.2.3     ; IP Eisen
+www     IN      CNAME   riegel.canyon.it09.com.' > /etc/bind/sites/riegel.canyon.it09.com
+
+echo ';
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     granz.channel.it09.com. root.granz.channel.it09.com. (
+                        2023111401      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      granz.channel.it09.com.
+@       IN      A       10.68.2.3     ; IP Eisen
+www     IN      CNAME   granz.channel.it09.com.' > /etc/bind/sites/granz.channel.it09.com
+```
+
+Lalu ubah konfigurasi nginx pada Load Balancer untuk menambahkan IP masing-masing worker
+
+```sh
+echo ' upstream worker {
+    server 10.68.3.1;
+    server 10.68.3.2;
+    server 10.68.3.3;
+}
+
+server {
+    listen 80;
+    server_name granz.channel.it09.com www.granz.channel.it09.com;
+
+    root /var/www/html;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://myweb    
+    }
+
+} ' > /etc/nginx/sites-available/granz.channel.it09.com
+
+
+ln -s /etc/nginx/sites-available/granz.channel.it09.com /etc/nginx/sites-enabled/
+rm /etc/nginx/sites-enabled/default
+
+service nginx restart
+```
 #### Output
+Lakukan testing pada salah satu client dengan command ```ab -n 1000 -c 100 http://www.granz.channel.it09.com/``` pada client. Hasil yang didapat adalah sebagai berikut
+
+![Screenshot 2023-11-20 192430](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/b9fd9315-f839-49dd-91c3-cae807885601)
 
 ## Soal 8
-
+Untuk soal ini sama seperti soal nomor 7, hanya saja diubah jumlah request menjadi 200. Jalankan command ```ab -n 200 -c 10 http://www.granz.channel.it09.com/``` pada client. Untuk analisis serta grafik kami sertakan di grimoire
 #### Output
+![Screenshot 2023-11-20 192854](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/cf96fc40-c96b-4eee-8ca1-55df20b6065e)
 
 ## Soal 9
-
+Pada soal diminta untuk melakukan testing dengan jumlah worker yang berbeda-beda yaitu 1, 2, dan 3 worker. Jalankan command  ```ab -n 100 -c 10 http://www.granz.channel.it09.com/``` pada salah satu worker. 
 #### Output
+```1 worker```
+![Screenshot 2023-11-20 193405](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/0b51d37b-693e-4c13-aa14-e56eb273f3bb)
+
+```2 worker```
+![Screenshot 2023-11-20 192854](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/2c449854-5ae2-4545-877f-3f9d44ee7c07)
+
+```3 worker```
+![Screenshot 2023-11-20 193634](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/8657b252-eb0f-4466-be29-e529d06a209b)
 
 ## Soal 10
 Untuk enable authentication kita perlu melakukan konfigurasi nginx di node Load Balancer (Eisen). Sebelumnya, buat terlebih dahulu direktori ```rahasisakita``` dan input password serta username sesuai yang diberikan di soal.
@@ -445,3 +521,13 @@ Untuk soal ini sama dengan nomor 16. Hanya harus mengganti alamat di command men
 
 #### Output
 ![login](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/860d1aac-9612-4ba2-94bf-ddbc1ec3172d)
+
+## Soal 17
+Pada soal diminta untuk melakukan request ke endpoint /me. Pertama-tama perlu didapatkan Authorization Token terlebih dahulu. Kami menjalankan script ```curl -X POST -H "Content-Type: application/json" -d @login.json http://10.68.4.5:8001/api/auth/login > lg.txt``` pada worker Flamme.
+
+![Screenshot 2023-11-20 194053](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/18c02786-db53-4174-adea-7d000f9d28e8)
+
+Kemudian lakukan testing dengan cara menjalankan command ```ab -n 100 -c 10 -H "Authorization: Bearer $token" http://10.68.4.5:8001/api/me```
+
+#### Output
+![Screenshot 2023-11-20 194439](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/0d168679-d38a-4d9e-a022-a33f72410a25)
