@@ -306,7 +306,7 @@ Untuk soal ini sama seperti soal nomor 7, hanya saja diubah jumlah request menja
 ![Screenshot 2023-11-20 192854](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/cf96fc40-c96b-4eee-8ca1-55df20b6065e)
 
 ## Soal 9
-Pada soal diminta untuk melakukan testing dengan jumlah worker yang berbeda-beda yaitu 1, 2, dan 3 worker. Jalankan command  ```ab -n 100 -c 10 http://www.granz.channel.it09.com/``` pada salah satu worker. 
+Pada soal diminta untuk melakukan testing dengan jumlah worker yang berbeda-beda yaitu 1, 2, dan 3 worker. Jalankan command  ```ab -n 100 -c 10 http://www.granz.channel.it09.com/``` pada salah satu client. 
 #### Output
 ```1 worker```
 
