@@ -154,3 +154,13 @@ skip-bind-address
 ' > /etc/mysql/my.cnf
 
 service mysql restart
+
+# mysql -u root -p
+# Enter password: 
+
+# CREATE USER 'it09'@'%' IDENTIFIED BY 'passwordit09';
+# CREATE USER 'it09'@'localhost' IDENTIFIED BY 'passwordit09';
+# CREATE DATABASE dbit09;
+# GRANT ALL PRIVILEGES ON *.* TO 'it09'@'%';
+# GRANT ALL PRIVILEGES ON *.* TO 'it09'@'localhost';
+# FLUSH PRIVILEGES;
