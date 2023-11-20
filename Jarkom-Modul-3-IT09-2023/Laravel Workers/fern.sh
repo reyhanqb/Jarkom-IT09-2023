@@ -6,6 +6,7 @@ sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://pa
 apt-get update
 apt-get install php8.0-mbstring php8.0-xml php8.0-cli php8.0-common php8.0-intl php8.0-opcache php8.0-readline php8.0-mysql php8.0-fpm php8.0-curl unzip wget -y
 apt-get install nginx -y
+
 wget https://getcomposer.org/download/2.0.13/composer.phar
 chmod +x composer.phar
 mv composer.phar /usr/bin/composer
@@ -16,7 +17,7 @@ composer update
 composer install
 cp /var/www/laravel-praktikum-jarkom/.env.example /var/www/laravel-praktikum-jarkom/.env
 
-nano .env
+echo '
 DB_CONNECTION=mysql
 DB_HOST=10.68.2.2
 DB_PORT=3306
@@ -34,4 +35,34 @@ php artisan db:seed
 php artisan storage:link
 php artisan jwt:secret
 php artisan config:clear
+' > /var/www/laravel-praktikum-jarkom/.env
+
 chown -R www-data.www-data /var/www/laravel-praktikum-jarkom/storage
+
+echo ' 
+server {
+    listen 8001;
+    
+    root /var/www/laravel-praktikum-jarkom/public;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
+    }
+
+    location ~ /\ .ht {
+        deny all;
+    }
+
+    error_log /var/log/nginx/jarkom_error.log;
+    access_log /var/log/nginx/jarkom_access.log;    
+
+} ' > /etc/nginx/sites-available/laravel-worker

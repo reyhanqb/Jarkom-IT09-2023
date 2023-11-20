@@ -27,7 +27,7 @@ location / {
 # pass PHP scripts to FastCGI server
 location ~ \.php$ {
         include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
 }
 
 location ~ /\.ht {
@@ -43,6 +43,6 @@ ln -s /etc/nginx/sites-available/granz.channel.it09.com /etc/nginx/sites-enabled
 
 rm /etc/nginx/sites-enabled/default
 
-service php7.2-fpm start
+service php7.3-fpm start
 
 service nginx restartx  
