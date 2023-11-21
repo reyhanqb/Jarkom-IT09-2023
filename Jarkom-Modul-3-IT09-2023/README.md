@@ -375,7 +375,24 @@ Hasilnya adalah jika url yang diakses memiliki alamat ```\its```,  akan diredire
 ![its](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/e6361e4a-1986-41ca-a5b7-29e6e45caf9b)
 
 ## Soal 12
- 
+Diminta untuk melimit IP yang diperbolehkan mengakses load balancer. Untuk melakukan hal ini, cukup edit konfigurasi nginx pada Load Balancer sebagai berikut
+
+```sh
+location / {
+        allow 10.68.3.69;
+        allow 10.68.3.70;
+        allow 10.68.4.167;
+        allow 10.68.4.168;
+        allow 10.68.3.23;
+        deny all;
+
+        proxy_pass http://myweb;
+        auth_basic "Restricted Content";
+        auth_basic_user_file /etc/nginx/rahasisakita/.htpasswd;
+    }
+```
+Dimana 10.68.3.23 adalah IP Client Revolte yang didapat setelah diberikan lease IP. Maka selain dari IP yang diallow pada konfigurasi, node lainnya tidak akan bisa mengakses Load Balancer.
+
 #### Output
 Jika kita mencoba akses dari client yang tidak mendapatkan ip yang di allow, maka akan mereturn 403 forbidden
 

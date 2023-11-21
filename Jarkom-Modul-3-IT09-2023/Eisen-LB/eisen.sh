@@ -34,6 +34,7 @@ server {
         allow 10.68.3.70;
         allow 10.68.4.167;
         allow 10.68.4.168;
+        [ip client];
         deny all;
 
         proxy_pass http://myweb;
