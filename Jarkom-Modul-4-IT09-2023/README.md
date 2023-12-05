@@ -1,9 +1,11 @@
 # Jarkom-Modul-4-IT09-2023
 
 ## Anggota
-Muhammad Hilmy Adhi Pradityo - 5027211053
 
-Athaya Reyhan Nugroho - 5027211067
+Nama  | NRP
+------------- | -------------
+Muhammad Hilmy Adhi Pradityo  | 5027211053
+Athaya Reyhan Nugroho  | 5027211067
 
 # Topologi
 ![App Screenshot](https://i.ibb.co/JK1YKfJ/Whats-App-Image-2023-12-05-at-13-12-40.jpg)
@@ -59,9 +61,31 @@ Test dengan melakukan ping dari Aura ke RoyalCapital/WilleRegion dan sebaliknya.
 ![App Screenshot](https://i.ibb.co/dsTK5CV/Whats-App-Image-2023-12-05-at-14-08-56.jpg)
 
 # CIDR
-
 ## Topologi
+![Topologi](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/70b7aea4-4e10-45d0-8ea7-d81a33b555bc)
 
 ## Tree
+![Tree](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/8cdd2cd4-f531-4da9-ae83-72f77fa32178)
 
+## Pembagian
+
+![Screenshot 2023-12-05 153614](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/778ab4ed-0a9c-4e0f-b6cf-bda9fa5f0d48)
+
+![Screenshot 2023-12-05 153625](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/453037fd-9f01-465a-8f84-40fe9b7e8b9e)
+
+![Screenshot 2023-12-05 154223](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/01f4c0fd-163b-42df-8a3f-ca0693ed1af9)
+
+![Screenshot 2023-12-05 153749](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/f7db4173-8deb-4aaa-8fb7-5b0cc234f40a)
+
+![Screenshot 2023-12-05 153816](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/ebc6074f-acc1-4420-9bc5-25928e4fbd0c)
+
+![Screenshot 2023-12-05 153839](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/d17a78f1-3ada-487b-9c89-5e4cb9a25462)
+
+![Screenshot 2023-12-05 153853](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/03d4f268-6570-4ac0-856d-07c9de01b77a)
+
+![Screenshot 2023-12-05 153911](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/f5c093e4-ab0c-411a-a8a4-60a185ee1f0f)
+
+![Screenshot 2023-12-05 153925](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/7d79eb61-cad7-452f-8e3f-aac1ca25894d)
 ## Pembagian IP
+
+![Screenshot 2023-12-05 160324](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/f7ab7877-449a-40b7-a574-8c7983ceea55)
