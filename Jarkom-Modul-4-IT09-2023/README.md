@@ -24,7 +24,7 @@ Buat perhitungan dari subnet mask dari masing-masing subnet untuk menentukan pem
 
 ## VLSM Tree 
 Setelah konfigurasi IP didapatkan, gambarkan tree VLSM nya.
-![App Screenshot](https://i.ibb.co/v4Sw9rt/Whats-App-Image-2023-12-02-at-02-33-11-1.jpg)
+![App Screenshot](https://i.ibb.co/vmSLTqB/Whats-App-Image-2023-12-05-at-16-50-58.jpg)
 
 ## Konfigurasi di CPT
 ### Subnetting
