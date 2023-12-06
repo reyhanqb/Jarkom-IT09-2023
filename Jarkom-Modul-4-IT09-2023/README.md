@@ -211,4 +211,4 @@ Test dengan melakukan ping dari Aura ke RoyalCapital/WilleRegion dan sebaliknya.
 
 Berikut ini merupakan IP yang didapat setelah melakukan pembagian
 
-![Screenshot 2023-12-06 155642](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/33233a7d-1f88-44e3-b47e-120a67a98591)
+![Screenshot 2023-12-06 155642](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/1267983a-2951-4123-96e4-da12d665012d)
