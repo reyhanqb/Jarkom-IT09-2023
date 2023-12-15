@@ -21,3 +21,7 @@ Tentukan Subnet Mask dari masing-masing subnet, dengan jumlah host yang dibutuhk
 ## Konfigurasi IP
 Buat perhitungan dari subnet mask dari masing-masing subnet untuk menentukan pembagian konfigurasi IP.
 ![App Screenshot](https://i.ibb.co/TYCg0R8/Whats-App-Image-2023-12-15-at-18-30-26.jpg)
+
+## VLSM Tree 
+Setelah konfigurasi IP didapatkan, gambarkan tree VLSM nya.
+![App Screenshot](https://i.ibb.co/188LQQN/Whats-App-Image-2023-12-15-at-19-38-21.jpg)
